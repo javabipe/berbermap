@@ -5,10 +5,10 @@ import { getFirestore } from 'firebase/firestore';
 import { getAuth } from 'firebase/auth';
 
 const firebaseConfig = {
-  apiKey: 'AIzaSyAKd1BYqyk8kYGfpxBKt_WdsRMgcUzp7Gw',
-  authDomain: 'berbermap.firebaseapp.com',
-  projectId: 'berbermap',
-  storageBucket: 'berbermap.appspot.com',
+  apiKey: 'AIzaSyCg2Rl7gO_CASG-0Ml6rjsRcAWkPoII6s8',
+  authDomain: 'algar-1616501032135.firebaseapp.com',
+  projectId: 'algar-1616501032135',
+  storageBucket: 'algar-1616501032135',
   messagingSenderId: '68173930158',
   appId: '1:68173930158:web:e06af9043722cf00b8973f',
 };
