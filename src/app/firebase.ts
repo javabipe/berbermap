@@ -8,9 +8,9 @@ const firebaseConfig = {
   apiKey: 'AIzaSyCg2Rl7gO_CASG-0Ml6rjsRcAWkPoII6s8',
   authDomain: 'algar-1616501032135.firebaseapp.com',
   projectId: 'algar-1616501032135',
-  storageBucket: 'algar-1616501032135',
-  messagingSenderId: '68173930158',
-  appId: '1:68173930158:web:e06af9043722cf00b8973f',
+  storageBucket: 'algar-1616501032135.appspot.com',
+  messagingSenderId: '759630716122',
+  appId: '1:759630716122:web:21f120906602f49890d9e3',
 };
 
 // Initialize Firebase
