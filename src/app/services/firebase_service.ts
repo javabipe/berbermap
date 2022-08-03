@@ -99,7 +99,7 @@ export class FirebaseService implements OnDestroy {
 
   readonly authStateChanged = new Subject<void>();
   readonly panToSubject = new Subject<Pos>();
-  readonly zoomToSubject = new Subject<Zoo>();
+  readonly setZoomToSubject = new Subject<Zoo>();
   private readonly drawerOpenSubject = new BehaviorSubject<boolean>(false);
   readonly drawerOpenObservable: Observable<boolean> = this.drawerOpenSubject;
 
@@ -438,8 +438,8 @@ export class FirebaseService implements OnDestroy {
     this.panToSubject.next(pos);
   }
   
-  zoomTo(zoom: Zoo) {
-    this.zoomToSubject.next(zoom);
+  setZoom(zoom: Zoo) {
+    this.setZoomToSubject.next(zoom);
   }
 
   updateFilterCategory(category: string, checked: boolean) {
