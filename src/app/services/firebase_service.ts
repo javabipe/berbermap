@@ -431,7 +431,7 @@ export class FirebaseService implements OnDestroy {
 
   panTo(pos: Pos) {
     this.panToSubject.next(pos);
-    this.setZoom(18);
+    map.setZoom(18);
   }
 
   updateFilterCategory(category: string, checked: boolean) {
