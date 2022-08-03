@@ -12,11 +12,11 @@
     </button>
 
     <mat-form-field class="no-padding input-outline-primary" appearance="outline">
-      <mat-label>Search for spots</mat-label>
+      <mat-label>Procurar por local</mat-label>
       <input
         #searchInput
         matInput
-        placeholder="Ex: Yosemite"
+        placeholder="Ex: Av. Uirapuru 1"
         [(ngModel)]="firebaseService.filterText"
         (ngModelChange)="firebaseService.filterMarkers()"
         (keydown.enter)="$event.preventDefault(); firebaseService.filterMarkers()"
@@ -86,12 +86,12 @@
     <mat-divider></mat-divider>
 
     <div class="bottom-row">
-      <div class="clear-filter" (click)="firebaseService.clearFilter()">Clear filter</div>
+      <div class="clear-filter" (click)="firebaseService.clearFilter()">Limpar filtro</div>
       <button
         class="close-filter-panel-button"
         mat-icon-button
         color="accent"
-        matTooltip="Close filter panel"
+        matTooltip="Limpar barra de filtro"
         matTooltipPosition="above"
         (click)="openFilterCard()"
       >
@@ -106,10 +106,10 @@
       class="clear-filter"
       (click)="firebaseService.clearFilter()"
     >
-      Clear filter
+      Limpar filtro
     </div>
     <div class="total-spots">
-      {{firebaseService.filteredMarkers.length + '/' + firebaseService.markers.length + ' spots'}}
+      {{firebaseService.filteredMarkers.length + '/' + firebaseService.markers.length + ' locais'}}
     </div>
   </div>
   <div
