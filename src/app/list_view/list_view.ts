@@ -74,7 +74,6 @@ export class ListViewComponent implements OnDestroy {
     }
     this.firebaseService.selectSpot(marker.spotId);
     this.firebaseService.panTo({ lat: marker.position.lat, lng: marker.position.lng });
-    this.firebaseService.setZoom({ zoom: 8 });
   }
 
   openFilterCard() {
