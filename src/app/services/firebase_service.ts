@@ -71,10 +71,6 @@ export interface Pos {
   lng: number;
 }
 
-export interface Zoo {
-  zoom: number;
-}
-
 function makeMarkerOption(icon: string, markSelected: boolean): google.maps.MarkerOptions {
   return {
     draggable: false,
@@ -99,7 +95,6 @@ export class FirebaseService implements OnDestroy {
 
   readonly authStateChanged = new Subject<void>();
   readonly panToSubject = new Subject<Pos>();
-  readonly setZoomToSubject = new Subject<Zoo>();
   private readonly drawerOpenSubject = new BehaviorSubject<boolean>(false);
   readonly drawerOpenObservable: Observable<boolean> = this.drawerOpenSubject;
 
@@ -436,10 +431,6 @@ export class FirebaseService implements OnDestroy {
 
   panTo(pos: Pos) {
     this.panToSubject.next(pos);
-  }
-  
-  setZoom(zoom: Zoo) {
-    this.setZoomToSubject.next(zoom);
   }
 
   updateFilterCategory(category: string, checked: boolean) {
