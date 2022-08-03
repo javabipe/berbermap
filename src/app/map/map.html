@@ -2,11 +2,13 @@
   height="100%"
   width="100%"
   [options]="{
-    disableDefaultUI: true,
-    clickableIcons: false,
-    zoomControl: true,
-    styles: mapStyle,
-    zoom: 11
+  mapId: '2f0bb3aaaafce02c',
+  disableDefaultUI: true,
+  gestureHandling: 'greedy',
+  center: {lat: 53.554486, lng: 10.007479},
+  zoom: 19,
+  heading: 324,
+  tilt: 65
   }"
   (click)="clickMap()"
 >
