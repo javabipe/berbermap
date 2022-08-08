@@ -18,7 +18,7 @@ import { DocumentReference } from 'firebase/firestore/lite';
 import { deleteObject, getDownloadURL, getStorage, ref, uploadBytes } from 'firebase/storage';
 import { BehaviorSubject, Observable, Subject } from 'rxjs';
 
-import { auth, db } from '../firebase';
+import { auth, db, db2 } from '../firebase';
 import { iconColorMap, iconLabelMap } from './marker_icon';
 import { SpotInfoDialogComponent } from '../spot_info/spot_info_dialog';
 import { MatDialog } from '@angular/material/dialog';
