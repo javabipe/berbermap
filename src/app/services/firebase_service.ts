@@ -22,6 +22,12 @@ import { auth, db } from '../firebase';
 import { iconColorMap, iconLabelMap } from './marker_icon';
 import { SpotInfoDialogComponent } from '../spot_info/spot_info_dialog';
 import { MatDialog } from '@angular/material/dialog';
+import { doc, onSnapshot } from "firebase/firestore";
+
+onSnapshot(doc(db, "users", "CO74uSGlSzNBeAFSj3C988BykqE2"), (doc) => {
+    alert("Current data: ", doc.data());
+});
+
 
 interface CreateSpotParams {
   editingSpotId?: string;
