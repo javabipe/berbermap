@@ -4,11 +4,6 @@ import { ReplaySubject, takeUntil } from 'rxjs';
 import { FirebaseService, Marker } from '../services/firebase_service';
 import { mapStyle } from './map_style';
 import { db } from '../firebase';
-import { doc, onSnapshot } from "firebase/firestore";
-
-const unsub = onSnapshot(doc(db, "users", "spots2"), (doc) => {
-  alert("Current data: "+ doc.data());
-});
 
 
 @Component({
