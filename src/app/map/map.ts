@@ -102,7 +102,7 @@ export class MapComponent implements AfterViewInit, OnDestroy {
   readonly d = onSnapshot(this.q, (snapshot) => {
     snapshot.docChanges().forEach((change) => {
       if (change.type === "added") {
-          alert("Adicionado: "+ change.doc.data());
+          //alert("Adicionado: "+ change.doc.data());
           this.firebaseService.openSpotInfoDialog2();
       }
       if (change.type === "modified") {
