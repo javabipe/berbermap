@@ -23,7 +23,7 @@ const LIGHTBOX_ID = 'lightbox_id';
   templateUrl: 'spot_info_dialog.html',
   styleUrls: ['./spot_info_dialog.scss'],
 })
-export class SpotInfoDialogComponent implements OnInit, OnDestroy {
+export class CamAlarmDialogComponent implements OnInit, OnDestroy {
   @ViewChild('images') imagesRef?: ElementRef<HTMLElement>;
   readonly iconColorMap = iconColorMap;
 
