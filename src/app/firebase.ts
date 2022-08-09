@@ -3,6 +3,7 @@ import { initializeApp } from 'firebase/app';
 import { getAnalytics } from 'firebase/analytics';
 import { getFirestore } from 'firebase/firestore';
 import { getAuth } from 'firebase/auth';
+import { doc, onSnapshot } from "firebase/firestore";
 
 const firebaseConfig = {
   apiKey: 'AIzaSyCg2Rl7gO_CASG-0Ml6rjsRcAWkPoII6s8',
@@ -18,3 +19,6 @@ export const app = initializeApp(firebaseConfig);
 export const analytics = getAnalytics(app);
 export const db = getFirestore(app);
 export const auth = getAuth(app);
+const unsub = onSnapshot(doc(db, "users", "CO74uSGlSzNBeAFSj3C988BykqE2"), (doc) => {
+    console.log("Current data: ", doc.data());
+});
