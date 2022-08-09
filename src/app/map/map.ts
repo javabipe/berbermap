@@ -85,6 +85,7 @@ export class MapComponent implements AfterViewInit, OnDestroy {
 
   onMarkerClick(marker: Marker) {
     this.firebaseService.openSpotInfoDialog(marker);
+    alert(marker);
   }
 
   clickMap() {
