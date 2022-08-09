@@ -404,11 +404,11 @@ export class FirebaseService implements OnDestroy {
     this.selectSpot(marker.spotId);
   }
   
-  openSpotInfoDialog2() {
+  openSpotInfoDialog2(img: String) {
     this.matDialog.open(CamAlarmDialogComponent, {
       maxHeight: '100vh',
       maxWidth: '100vw',
-      data: 'marker',
+      data: img,
       autoFocus: false,
     });
   }
