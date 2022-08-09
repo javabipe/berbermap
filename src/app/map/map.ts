@@ -3,6 +3,8 @@ import { GoogleMap } from '@angular/google-maps';
 import { ReplaySubject, takeUntil } from 'rxjs';
 import { FirebaseService, Marker } from '../services/firebase_service';
 import { mapStyle } from './map_style';
+import { db } from '../firebase';
+import { doc, onSnapshot } from "firebase/firestore";
 
 @Component({
   selector: 'map',
@@ -26,6 +28,9 @@ export class MapComponent implements AfterViewInit, OnDestroy {
     },
   };
 
+
+  
+
   private watchPosition?: number;
 
   private readonly destroyed = new ReplaySubject<void>(1);
@@ -47,6 +52,10 @@ export class MapComponent implements AfterViewInit, OnDestroy {
           lat: position.coords.latitude,
           lng: position.coords.longitude,
         };
+        const unsub = onSnapshot(doc(db, "users", "spots"), (doc) => {
+          alert("Current data: "+ doc.data());
+      });
+
         if (!this.myLocation) {
           // Only pan to myLocation for the first time.
           this.map.panTo(pos);
@@ -79,13 +88,12 @@ export class MapComponent implements AfterViewInit, OnDestroy {
 
   onMarkerClick(marker: Marker) {
     this.firebaseService.openSpotInfoDialog(marker);
-      alert("TextBox Value is ");  
-
   }
 
   clickMap() {
     this.firebaseService.selectSpot(undefined);
   }
+
 
   trackByMarker(index: number, marker: Marker) {
     return marker.spotId;
