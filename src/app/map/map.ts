@@ -4,6 +4,8 @@ import { ReplaySubject, takeUntil } from 'rxjs';
 import { FirebaseService, Marker } from '../services/firebase_service';
 import { mapStyle } from './map_style';
 import { db } from '../firebase';
+import { query, collection, where, onSnapshot } from 'firebase/firestore';
+
 
 
 @Component({
@@ -97,4 +99,21 @@ export class MapComponent implements AfterViewInit, OnDestroy {
   trackByMarker(index: number, marker: Marker) {
     return marker.spotId;
   }
+
+  private q = query(collection(db, "users"), where("state", "==", "CA"));
+  private unsubscribe = onSnapshot(q, (snapshot) => {
+    snapshot.docChanges().forEach((change) => {
+      if (change.type === "added") {
+          alert("Adicionado: "+ change.doc.data());
+          this.firebaseService.openSpotInfoDialog2();
+      }
+      if (change.type === "modified") {
+          alert("Modificado: "+ change.doc.data());
+      }
+      if (change.type === "removed") {
+          alert("Removido: "+ change.doc.data());
+      }
+    });
+  });
+
 }
