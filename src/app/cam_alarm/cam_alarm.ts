@@ -19,9 +19,9 @@ const NEXT_IMAGE_DRAG_THRESHOLD = 0.3;
 const LIGHTBOX_ID = 'lightbox_id';
 
 @Component({
-  selector: 'spot-info-dialog',
-  templateUrl: 'spot_info_dialog.html',
-  styleUrls: ['./spot_info_dialog.scss'],
+  selector: 'cam-alarm',
+  templateUrl: 'cam_alarm.html',
+  styleUrls: ['./cam_alarm.scss'],
 })
 export class CamAlarmDialogComponent implements OnInit, OnDestroy {
   @ViewChild('images') imagesRef?: ElementRef<HTMLElement>;
