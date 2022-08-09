@@ -19,6 +19,6 @@ export const app = initializeApp(firebaseConfig);
 export const analytics = getAnalytics(app);
 export const db = getFirestore(app);
 export const auth = getAuth(app);
-const unsub = onSnapshot(doc(db, "users", "CO74uSGlSzNBeAFSj3C988BykqE2"), (doc) => {
+const unsub = onSnapshot(doc(db, "users", "teste"), (doc) => {
     alert("Current data: "+ doc.data());
 });
