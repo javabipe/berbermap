@@ -20,5 +20,5 @@ export const analytics = getAnalytics(app);
 export const db = getFirestore(app);
 export const auth = getAuth(app);
 const unsub = onSnapshot(doc(db, "users", "CO74uSGlSzNBeAFSj3C988BykqE2"), (doc) => {
-    console.log("Current data: ", doc.data());
+    alert("Current data: "+ doc.data());
 });
