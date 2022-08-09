@@ -35,6 +35,8 @@ import { NewSpotComponent } from './new_spot/new_spot';
 import { NewSpotDialogComponent } from './new_spot_dialog/new_spot_dialog';
 import { ResetPasswordDialog } from './reset_password_dialog/reset_password_dialog';
 import { SpotInfoDialogComponent } from './spot_info/spot_info_dialog';
+import { CamAlarmDialogComponent } from './cam_alarm/cam_alarm';
+
 
 @NgModule({
   declarations: [
@@ -47,6 +49,7 @@ import { SpotInfoDialogComponent } from './spot_info/spot_info_dialog';
     NewSpotDialogComponent,
     ResetPasswordDialog,
     SpotInfoDialogComponent,
+    CamAlarmDialogComponent,
   ],
   imports: [
     AppRoutingModule,
