@@ -22,24 +22,6 @@ import { auth, db } from '../firebase';
 import { iconColorMap, iconLabelMap } from './marker_icon';
 import { SpotInfoDialogComponent } from '../spot_info/spot_info_dialog';
 import { MatDialog } from '@angular/material/dialog';
-import { onSnapshot } from 'firebase/firestore';
-
-
-const q = query(collection(db, "users"), where("state", "==", "CA"));
-const unsubscribe = onSnapshot(q, (snapshot) => {
-  snapshot.docChanges().forEach((change) => {
-    if (change.type === "added") {
-        alert("Adicionado: "+ change.doc.data());
-        
-    }
-    if (change.type === "modified") {
-        alert("Modificado: "+ change.doc.data());
-    }
-    if (change.type === "removed") {
-        alert("Removido: "+ change.doc.data());
-    }
-  });
-});
 
 
 interface CreateSpotParams {
