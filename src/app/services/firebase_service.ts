@@ -13,18 +13,15 @@ import {
   arrayRemove,
   query,
   where,
-  Firestore,
 } from 'firebase/firestore';
 import { DocumentReference } from 'firebase/firestore/lite';
 import { deleteObject, getDownloadURL, getStorage, ref, uploadBytes } from 'firebase/storage';
 import { BehaviorSubject, Observable, Subject } from 'rxjs';
 
-import { auth, db, app } from '../firebase';
+import { auth, db } from '../firebase';
 import { iconColorMap, iconLabelMap } from './marker_icon';
 import { SpotInfoDialogComponent } from '../spot_info/spot_info_dialog';
 import { MatDialog } from '@angular/material/dialog';
-import { onSnapshot } from "firebase/firestore";
-
 
 interface CreateSpotParams {
   editingSpotId?: string;
@@ -97,7 +94,6 @@ export class FirebaseService implements OnDestroy {
   currentUser: User | null = null;
 
   readonly authStateChanged = new Subject<void>();
-  readonly onStateChanged = new Subject<void>();
   readonly panToSubject = new Subject<Pos>();
   private readonly drawerOpenSubject = new BehaviorSubject<boolean>(false);
   readonly drawerOpenObservable: Observable<boolean> = this.drawerOpenSubject;
@@ -140,19 +136,11 @@ export class FirebaseService implements OnDestroy {
         this.clearFilter();
       }
     });
-
-    onSnapshot(doc(db, "users", "spots2"), (doc) => {
-      this.onStateChanged.next();
-      alert("Current data: "+ doc.data());
-    });
-
-
   }
 
   ngOnDestroy() {
     this.authStateChanged.complete();
     this.panToSubject.complete();
-    this.onStateChanged.complete();
   }
 
   async fetchSpots() {
@@ -162,14 +150,10 @@ export class FirebaseService implements OnDestroy {
       return;
     }
     const uid = this.currentUser.uid;
-    const userRef = doc(db, 'users', uid);    
+    const userRef = doc(db, 'users', uid);
 
     const spotsCollection = collection(userRef, 'spots') as CollectionReference<SpotDB>;
-    
     const querySnapshot = await getDocs(spotsCollection);
-    querySnapshot.docChanges().forEach(change => {
-      alert(change.type) 
-    });
 
     querySnapshot.forEach((doc) => {
       const spot = doc.data();
@@ -408,17 +392,7 @@ export class FirebaseService implements OnDestroy {
     });
   }
 
-  
   openSpotInfoDialog(marker: Marker) {
-    const uid = this.currentUser.uid;
-    const userRef = doc(db, 'users', uid);
-
-    const spotsCollection = collection(userRef, 'spots') as CollectionReference<SpotDB>;
-    const querySnapshot = await getDocs(spotsCollection);
-    querySnapshot.docChanges().forEach(change => {
-      alert(change.type) 
-    });
-
     this.matDialog.open(SpotInfoDialogComponent, {
       maxHeight: '100vh',
       maxWidth: '100vw',
