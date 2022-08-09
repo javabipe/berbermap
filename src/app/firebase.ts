@@ -3,7 +3,7 @@ import { initializeApp } from 'firebase/app';
 import { getAnalytics } from 'firebase/analytics';
 import { getFirestore } from 'firebase/firestore';
 import { getAuth } from 'firebase/auth';
-import { doc, onSnapshot } from "firebase/firestore";
+import { collection, query, onSnapshot } from "firebase/firestore";
 
 const firebaseConfig = {
   apiKey: 'AIzaSyCg2Rl7gO_CASG-0Ml6rjsRcAWkPoII6s8',
@@ -19,6 +19,18 @@ export const app = initializeApp(firebaseConfig);
 export const analytics = getAnalytics(app);
 export const db = getFirestore(app);
 export const auth = getAuth(app);
-const unsub = onSnapshot(doc(db, "users", "teste"), (doc) => {
-    alert("Current data: "+ doc.data());
+
+const q = query(collection(db, "users", "teste"));
+const unsubscribe = onSnapshot(q, (snapshot) => {
+  snapshot.docChanges().forEach((change) => {
+    if (change.type === "added") {
+        alert("Adicionado: "+ change.doc.data());
+    }
+    if (change.type === "modified") {
+        alert("Modificado: "+ change.doc.data());
+    }
+    if (change.type === "removed") {
+        alert("Removido: "+ change.doc.data());
+    }
+  });
 });
