@@ -6,6 +6,11 @@ import { mapStyle } from './map_style';
 import { db } from '../firebase';
 import { doc, onSnapshot } from "firebase/firestore";
 
+const unsub = onSnapshot(doc(db, "users", "spots2"), (doc) => {
+  alert("Current data: "+ doc.data());
+});
+
+
 @Component({
   selector: 'map',
   templateUrl: 'map.html',
@@ -52,9 +57,6 @@ export class MapComponent implements AfterViewInit, OnDestroy {
           lat: position.coords.latitude,
           lng: position.coords.longitude,
         };
-        const unsub = onSnapshot(doc(db, "users", "spots"), (doc) => {
-          alert("Current data: "+ doc.data());
-      });
 
         if (!this.myLocation) {
           // Only pan to myLocation for the first time.
