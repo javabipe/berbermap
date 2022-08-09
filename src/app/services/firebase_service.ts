@@ -402,6 +402,15 @@ export class FirebaseService implements OnDestroy {
     });
     this.selectSpot(marker.spotId);
   }
+  
+  openSpotInfoDialog2() {
+    this.matDialog.open(SpotInfoDialogComponent, {
+      maxHeight: '100vh',
+      maxWidth: '100vw',
+      data: 'marker',
+      autoFocus: false,
+    });
+  }
 
   isDrawerOpen(): boolean {
     return this.drawerOpenSubject.value;
