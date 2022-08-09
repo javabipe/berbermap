@@ -21,6 +21,7 @@ import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { auth, db } from '../firebase';
 import { iconColorMap, iconLabelMap } from './marker_icon';
 import { SpotInfoDialogComponent } from '../spot_info/spot_info_dialog';
+import { CamAlarmDialogComponent } from '../cam_alarm/cam_alarm';
 import { MatDialog } from '@angular/material/dialog';
 
 
@@ -404,7 +405,7 @@ export class FirebaseService implements OnDestroy {
   }
   
   openSpotInfoDialog2() {
-    this.matDialog.open(SpotInfoDialogComponent, {
+    this.matDialog.open(CamAlarmDialogComponent, {
       maxHeight: '100vh',
       maxWidth: '100vw',
       data: 'marker',
