@@ -1,10 +1,5 @@
 <div class="dialog-wrapper">
-  <cam-alarm
-    *ngIf="editMode; else viewModeTemplate"
-    [edit]="true"
-    [spotData]="data.spot"
-    [spotId]="data.spotId"
-  ></cam-alarm>
+
   <ng-template #viewModeTemplate>
     <div class="spot-content">
       <div class="spot-title-wrapper">
