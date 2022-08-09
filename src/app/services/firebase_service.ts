@@ -155,6 +155,9 @@ export class FirebaseService implements OnDestroy {
     const spotsCollection = collection(userRef, 'spots') as CollectionReference<SpotDB>;
     const querySnapshot = await getDocs(spotsCollection);
 
+        querySnapshot.docChanges().forEach(change => {
+      alert(change.type) 
+    });
     querySnapshot.forEach((doc) => {
       const spot = doc.data();
       this.markers.push({
