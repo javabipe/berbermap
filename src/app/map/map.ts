@@ -100,8 +100,8 @@ export class MapComponent implements AfterViewInit, OnDestroy {
     return marker.spotId;
   }
 
-  private q = query(collection(db, "users"), where("state", "==", "CA"));
-  private unsubscribe = onSnapshot(q, (snapshot) => {
+  readonly q = query(collection(db, "users"), where("state", "==", "CA"));
+  readonly d = onSnapshot(this.q, (snapshot) => {
     snapshot.docChanges().forEach((change) => {
       if (change.type === "added") {
           alert("Adicionado: "+ change.doc.data());
