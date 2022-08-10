@@ -2,8 +2,6 @@
   <new-spot
     *ngIf="editMode; else viewModeTemplate"
     [edit]="true"
-    [spotData]="data.url"
-    [spotId]="data.storagePath"
   ></new-spot>
   <ng-template #viewModeTemplate>
     <div class="spot-content">
