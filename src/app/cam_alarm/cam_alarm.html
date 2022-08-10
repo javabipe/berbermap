@@ -25,12 +25,11 @@
         (pointercancel)="onImagesPointerCancel($event)"
       >
         <div
-          *ngFor="let image of data.url; let i = index"
           class="image-wrapper"
           [class.dragging]="imagePointerStartPos"
           [style.transform]="getImageTransform(i)"
         >
-          <img [src]="image" />
+          <img [src]="data.url" />
         </div>
         <button
           *ngIf="currentImageIndex !== 0"
