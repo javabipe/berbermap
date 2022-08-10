@@ -115,6 +115,7 @@ export class FirebaseService implements OnDestroy {
   private selectedSpotId?: string;
   // List of markers we get from firebase. This is all the markers, without filter.
   markers: Marker[] = [];
+  alarms = ['Hike', 'Food'];
   // All the tags computed from `this.markers`.
   allTags = new Set<string>();
 
