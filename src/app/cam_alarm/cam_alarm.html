@@ -2,37 +2,37 @@
   <new-spot
     *ngIf="editMode; else viewModeTemplate"
     [edit]="true"
-    [spotData]="data.spot"
-    [spotId]="data.spotId"
+    [spotData]="data.url"
+    [spotId]="data.storagePath"
   ></new-spot>
   <ng-template #viewModeTemplate>
     <div class="spot-content">
       <div class="spot-title-wrapper">
         <div class="spot-name">
-          {{data.spot.name}}&nbsp;
+          {{data.url}}&nbsp;
         </div>
       </div>
 
       <div class="tag-row">
-        <div *ngFor="let tag of data.spot.tags" class="tag-wrapper">
+        <div *ngFor="let tag of data.url" class="tag-wrapper">
           <div class="tag-content">{{tag}}</div>
         </div>
       </div>
 
       <div
         #images
-        *ngIf="data.spot.images.length"
+        *ngIf="data.url"
         class="images"
         (pointerdown)="onImagesPointerDown($event)"
         (pointercancel)="onImagesPointerCancel($event)"
       >
         <div
-          *ngFor="let image of data.spot.images; let i = index"
+          *ngFor="let image of data.url; let i = index"
           class="image-wrapper"
           [class.dragging]="imagePointerStartPos"
           [style.transform]="getImageTransform(i)"
         >
-          <img [src]="image.url" />
+          <img [src]="image" />
         </div>
         <button
           *ngIf="currentImageIndex !== 0"
@@ -45,7 +45,7 @@
         </button>
 
         <button
-          *ngIf="currentImageIndex < data.spot.images.length - 1"
+          *ngIf="currentImageIndex < data.url - 1"
           class="next-img-button image-buttons"
           mat-icon-button
           (pointerdown)="$event.stopPropagation()"
@@ -56,21 +56,21 @@
       </div>
       <div class="images-dots">
         <div
-          *ngFor="let image of data.spot.images; let i = index"
+          *ngFor="let image of data.url; let i = index"
           class="dot"
           [class.active]="currentImageIndex === i"
         ></div>
       </div>
 
-      <div *ngIf="data.spot.notes" class="note-wrapper">
+      <div *ngIf="data.storagePath" class="note-wrapper">
         <div class="note-container">
           <div class="note-title">Notes:</div>
-          <div class="note-content">{{data.spot.notes}}</div>
+          <div class="note-content">{{data.storagePath}}</div>
         </div>
       </div>
 
       <a
-        [href]="'https://www.google.com/maps/place/?q=place_id:' + data.spot.placeId"
+        [href]="'https://www.google.com/maps/place/?q=place_id:' + data.url"
         class="google-map-link"
         target="_blank"
         matTooltip="Open with Google Maps in a new tab."
