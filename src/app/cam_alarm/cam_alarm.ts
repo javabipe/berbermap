@@ -41,7 +41,7 @@ export class CamAlarmDialogComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     // Load items into gallery
-    alert(data.url + ' - '+data.storagePath); 
+    alert(this.data.url + ' - '+this.data.storagePath); 
     const items = this.data.spot.images.map(
       (image) => new ImageItem({ src: image.url, thumb: image.url })
     );
