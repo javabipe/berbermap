@@ -1,6 +1,7 @@
 import { Component, ElementRef, Inject, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Marker } from '../services/firebase_service';
+import { SpotImage } from '../services/firebase_service';
 import { iconColorMap } from '../services/marker_icon';
 import { Gallery, ImageItem } from 'ng-gallery';
 import { Lightbox } from 'ng-gallery/lightbox';
@@ -34,7 +35,7 @@ export class CamAlarmDialogComponent implements OnInit, OnDestroy {
   private imagesWidth?: number;
 
   constructor(
-    @Inject(MAT_DIALOG_DATA) readonly data: Marker,
+    @Inject(MAT_DIALOG_DATA) readonly data: SpotImage,
     private readonly gallery: Gallery,
     private readonly lightbox: Lightbox
   ) {}
@@ -42,10 +43,10 @@ export class CamAlarmDialogComponent implements OnInit, OnDestroy {
   ngOnInit() {
     // Load items into gallery
     alert(this.data.url + ' - '+this.data.storagePath); 
-    const items = this.data.spot.images.map(
-      (image) => new ImageItem({ src: image.url, thumb: image.url })
-    );
-    this.gallery.ref(LIGHTBOX_ID).load(items);
+    //const items = this.data.spot.images.map(
+    //  (image) => new ImageItem({ src: image.url, thumb: image.url })
+    //);
+    //this.gallery.ref(LIGHTBOX_ID).load(items);
   }
 
   ngOnDestroy() {
@@ -53,10 +54,10 @@ export class CamAlarmDialogComponent implements OnInit, OnDestroy {
   }
 
   swipeImage(newIndex: number) {
-    if (newIndex < 0 || newIndex >= this.data.spot.images.length) {
-      return;
-    }
-    this.currentImageIndex = newIndex;
+    //if (newIndex < 0 || newIndex >= this.data.spot.images.length) {
+     // return;
+   // }
+    //this.currentImageIndex = newIndex;
   }
 
   onImagesPointerDown(event: PointerEvent) {
@@ -84,9 +85,10 @@ export class CamAlarmDialogComponent implements OnInit, OnDestroy {
     const threshold = this.imagesWidth * NEXT_IMAGE_DRAG_THRESHOLD;
     if (this.currentImageIndex > 0 && dx > threshold) {
       this.currentImageIndex--;
-    } else if (this.currentImageIndex < this.data.spot.images.length - 1 && dx < -threshold) {
-      this.currentImageIndex++;
-    } else {
+    } //else if (this.currentImageIndex < this.data.spot.images.length - 1 && dx < -threshold) {
+      //this.currentImageIndex++;
+    //} 
+    else {
       const dy = event.clientY - this.imagePointerStartPos.y;
       const delta = Math.sqrt(dx * dx + dy * dy);
       if (delta <= OPEN_LIGHT_BOX_THRESHOLD_PX) {
@@ -113,13 +115,13 @@ export class CamAlarmDialogComponent implements OnInit, OnDestroy {
     let dxBounded = dxAbsBounded * Math.sign(dx);
     if (i === this.currentImageIndex) {
       // Center image.
-      if (
-        (this.currentImageIndex === 0 && dx > 0) ||
-        (this.currentImageIndex === this.data.spot.images.length - 1 && dx < 0)
-      ) {
+      //if (
+     //   (this.currentImageIndex === 0 && dx > 0) ||
+     //   (this.currentImageIndex === this.data.spot.images.length - 1 && dx < 0)
+     // ) {
         // Current image is the first or last one, only allow dragging a little bit.
-        dxBounded = Math.min(dxAbs, 50) * Math.sign(dx);
-      }
+       // dxBounded = Math.min(dxAbs, 50) * Math.sign(dx);
+      //}
       return `translateX(${dxBounded}px)`;
     }
     if (i === this.currentImageIndex + 1 && dx < 0) {
