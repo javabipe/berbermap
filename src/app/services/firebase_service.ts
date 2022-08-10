@@ -395,14 +395,6 @@ export class FirebaseService implements OnDestroy {
     });
   }
 
-    async createAlarm({
-    url,
-    storagePath,
-  }: SpotImage) {
-    console.log('teste');
-  }
-
-  
   
   openSpotInfoDialog(marker: Marker) {
     this.matDialog.open(SpotInfoDialogComponent, {
@@ -414,7 +406,7 @@ export class FirebaseService implements OnDestroy {
     this.selectSpot(marker.spotId);
   }
   
-  openSpotInfoDialog2(img: String) {
+  openSpotInfoDialog2(img: SpotImage) {
     this.matDialog.open(CamAlarmDialogComponent, {
       maxHeight: '100vh',
       maxWidth: '100vw',
