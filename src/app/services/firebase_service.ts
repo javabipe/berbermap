@@ -394,6 +394,15 @@ export class FirebaseService implements OnDestroy {
     });
   }
 
+    async createAlarm({
+    url,
+    storagePath,
+  }: SpotImage) {
+    console.log('teste');
+  }
+
+  
+  
   openSpotInfoDialog(marker: Marker) {
     this.matDialog.open(SpotInfoDialogComponent, {
       maxHeight: '100vh',
