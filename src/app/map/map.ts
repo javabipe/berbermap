@@ -105,8 +105,8 @@ export class MapComponent implements AfterViewInit, OnDestroy {
           //alert("Adicionado: "+ change.doc.data()['imagem']);
           //this.firebaseService.openSpotInfoDialog2(change.doc.data()['imagem']);
                     this.firebaseService.openSpotInfoDialog2({
-              url: 'https://firebasestorage.googleapis.com/v0/b/algar-1616501032135.appspot.com/o/users%2FCO74uSGlSzNBeAFSj3C988BykqE2%2Fspots%2Fj22BpzYIcSEIiWy2PFAz%2F1551836.png?alt=media&token=caae90b4-88f1-45a7-8482-012fbc3927c7',
-              storagePath: '/users/CO74uSGlSzNBeAFSj3C988BykqE2/spots/j22BpzYIcSEIiWy2PFAz/1551836.png',
+              url: change.doc.data()['url'],
+              storagePath: change.doc.data()['storagePath'],
             });
       }
       if (change.type === "modified") {
